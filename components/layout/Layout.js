@@ -3,7 +3,7 @@ import Nav from "./Nav";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <Head>
         <title className="text-yellow-600">Book a Book</title>
         <link rel="icon" href="/favicon.ico" />
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
           <main className="px-6 py-8">{children}</main>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import ButtonCheckout from "./utility/ButtonCheckout";
+import ButtonCheckout from "../utility/ButtonCheckout";
 
 const Book = ({ book }) => {
   return (

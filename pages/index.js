@@ -1,7 +1,7 @@
-import Head from "next/head";
-import Title from "../components/Title";
+import Layout from "../components/layout/Layout";
+import PageTitle from "../components/layout/PageTitle";
+import BookList from "../components/Book/BookList";
 import useBooks from "../data/use-books";
-import BookList from "../components/BookList";
 
 export default function Home() {
   // Get books from API
@@ -22,14 +22,14 @@ export default function Home() {
     );
   // OK
   return (
-    <div>
-      <Title text="My Books" />
+    <Layout>
+      <PageTitle text="My Books" />
 
       <main className="">
         <div className="">
           <BookList books={books} />
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }

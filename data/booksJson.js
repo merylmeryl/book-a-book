@@ -16,7 +16,7 @@ export default {
     {
       title: "To Kill a Mockingbird",
       author: "A Very Hungry Cat",
-      description: "Cats eating birds",
+      description: "Very hungry cats eating birds",
       isbn: "1234567890125",
     },
     {

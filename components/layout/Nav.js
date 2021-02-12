@@ -7,7 +7,7 @@ const Nav = () => {
         <div className="flex justify-between items-center">
           <div>
             <Link href="/">
-              <a className="text-gray-800 text-xl font-bold md:text-2xl">
+              <a className="text-yellow-500 text-xl font-bold md:text-2xl">
                 Book a Book
               </a>
             </Link>
@@ -15,7 +15,7 @@ const Nav = () => {
         </div>
         <div className="md:flex flex-col md:flex-row md:-mx-4 hidden">
           <Link href="/">
-            <a className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">
+            <a className="my-1 text-gray-800 hover:text-gray-500 md:mx-4 md:my-0">
               Login
             </a>
           </Link>
