@@ -6,29 +6,31 @@ import useBooks from "../data/use-books";
 export default function Home() {
   // Get books from API
   const { loading, error, books } = useBooks();
+  let bookList;
 
   // Check for errors / loading status
   if (error)
-    return (
+    bookList = (
       <div>
-        <main>Failed to load</main>
+        <main className="text-gray-500 text-center">Failed to load</main>
       </div>
     );
-  if (loading)
-    return (
+  else if (loading)
+    bookList = (
       <div>
-        <main>Loading...</main>
+        <main className="text-gray-500 text-center">Loading...</main>
       </div>
     );
+  else {
+    bookList = <BookList books={books} />;
+  }
   // OK
   return (
     <Layout>
       <PageTitle text="My Books" />
 
       <main className="">
-        <div className="">
-          <BookList books={books} />
-        </div>
+        <div className="">{bookList}</div>
       </main>
     </Layout>
   );

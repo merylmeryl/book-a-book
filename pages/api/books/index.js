@@ -17,7 +17,6 @@ export default async (req, res) => {
       break;
     case "POST":
       try {
-        console.log("req", req);
         const book = await Book.create(req.body);
         res.status(201).json({ success: true, data: book });
       } catch (error) {
