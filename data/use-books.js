@@ -3,14 +3,20 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 // Get books from API
 export default function useBooks() {
-  const { data, error } = useSWR("/api/books", fetcher, {
+  let books = [];
+
+  const { res, error } = useSWR("/api/books", fetcher, {
     refreshInterval: 1000,
   });
 
-  const loading = !data && !error;
+  if (res !== null && res !== undefined) {
+    books = res.data;
+  }
+
+  const loading = !res && !error;
   return {
     loading,
     error,
-    books: data,
+    books: books,
   };
 }
