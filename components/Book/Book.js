@@ -1,9 +1,10 @@
 import ButtonCheckout from "../utility/ButtonCheckout";
+import PopDiv from "../animation/PopDiv";
 
 const Book = ({ book }) => {
   return (
-    <div className="mt-6">
-      <div className="mx-auto max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
+    <PopDiv>
+      <div className="mt-6 mx-auto max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
         <h3 className="text-2xl text-gray-700 font-bold hover:underline">
           {book.title}
         </h3>
@@ -16,7 +17,7 @@ const Book = ({ book }) => {
           <ButtonCheckout />
         </div>
       </div>
-    </div>
+    </PopDiv>
   );
 };
 

@@ -5,16 +5,21 @@ dbConnect();
 
 export default async (req, res) => {
   const { method } = req;
+
+  // GET all books
   switch (method) {
     case "GET":
       try {
-        const books = await Book.find({});
+        const books = await Book.find({}).sort([["createdAt", -1]]);
 
-        res.status(200).json({ success: true, data: books });
+        res
+          .status(200)
+          .json({ success: true, data: books, count: books.length });
       } catch (error) {
         res.status(400).json({ success: false });
       }
       break;
+    // POST a new book
     case "POST":
       try {
         const book = await Book.create(req.body);

@@ -13,13 +13,6 @@ const Nav = () => {
             </Link>
           </div>
         </div>
-        <div className="md:flex flex-col md:flex-row md:-mx-4 hidden">
-          <Link href="/">
-            <a className="my-1 text-gray-800 hover:text-gray-500 md:mx-4 md:my-0">
-              Login
-            </a>
-          </Link>
-        </div>
       </div>
     </nav>
   );
