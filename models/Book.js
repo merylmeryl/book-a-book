@@ -1,6 +1,20 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const BookHistorySchema = new Schema({
+  state: {
+    type: String,
+    enum: ["NEW", "CHECKED IN", "RETURNED"],
+    default: "NEW",
+    required: true,
+  },
+  actionDate: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+});
+
 const BookSchema = new Schema({
   title: {
     type: String,
@@ -39,15 +53,9 @@ const BookSchema = new Schema({
     enum: ["NEW", "CHECKED IN", "RETURNED"],
     default: "NEW",
   },
-  history: [
-    {
-      state: {
-        type: String,
-        enum: ["NEW", "CHECKED IN", "RETURNED"],
-      },
-      actionDate: Date,
-    },
-  ],
+  history: {
+    type: [BookHistorySchema],
+  },
 });
 
 module.exports = mongoose.models.Book || mongoose.model("Book", BookSchema);

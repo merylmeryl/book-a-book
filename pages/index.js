@@ -7,23 +7,23 @@ import PopDiv from "../components/animation/PopDiv";
 export default function Home() {
   // Get books from API
   const { loading, error, books } = useBooks();
-  let bookList;
+  let mainContent;
 
   // Check for errors / loading status
   if (error)
-    bookList = (
+    mainContent = (
       <PopDiv>
         <main className="text-red-500 text-center">Failed to load -_-</main>
       </PopDiv>
     );
   else if (loading)
-    bookList = (
+    mainContent = (
       <PopDiv>
         <main className="text-gray-500 text-center">Loading...</main>
       </PopDiv>
     );
   else {
-    bookList = <BookList books={books} />;
+    mainContent = <BookList books={books} />;
   }
   // Show Book List
   return (
@@ -31,7 +31,7 @@ export default function Home() {
       <PageTitle text="My Books" />
 
       <main>
-        <PopDiv>{bookList}</PopDiv>
+        <PopDiv>{mainContent}</PopDiv>
       </main>
     </Layout>
   );

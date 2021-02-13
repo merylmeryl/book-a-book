@@ -5,7 +5,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export default function useBooks() {
   let books = [];
 
-  const { data, error } = useSWR("/api/books", fetcher, {
+  const { data, count, error } = useSWR("/api/books", fetcher, {
     refreshInterval: 1000,
   });
 
@@ -18,5 +18,6 @@ export default function useBooks() {
     loading,
     error,
     books: books,
+    count,
   };
 }
