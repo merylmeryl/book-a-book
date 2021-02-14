@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Home() {
   // Get books from API
   const { loading, error, books, count } = useBooks();
-  let mainContent;
+  let mainContent = <></>;
 
   // Check for errors / loading status
   if (error)
@@ -27,8 +27,8 @@ export default function Home() {
     mainContent = (
       <>
         <div className="flex flex-col justify-between text-center">
-          <p className="py-2 mb-2">
-            Number of books:{" "}
+          <p className="mx-auto py-2 mb-2 text-2xl bg-gray-800 text-white bg-opacity-80 rounded w-3/4">
+            Book count:{" "}
             <span className="font-bold text-green-500">{count}</span>
           </p>
           <Link href="/books/new">

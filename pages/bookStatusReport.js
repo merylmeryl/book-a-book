@@ -1,12 +1,12 @@
 import Layout from "../components/layout/Layout";
 import PageTitle from "../components/layout/PageTitle";
 import BookTable from "../components/Book/BookTable";
-import useBooksHistory from "../data/use-books-history";
+import useBooks from "../data/use-books";
 import PopDiv from "../components/animation/PopDiv";
 
 export default function BookHistoryReport() {
   // Get books from API
-  const { loading, error, books } = useBooksHistory();
+  const { loading, error, books } = useBooks();
   let mainContent;
 
   // Check for errors / loading status
@@ -26,15 +26,15 @@ export default function BookHistoryReport() {
     mainContent = (
       <BookTable
         books={books}
-        emptyMessage="Hmm, it seems there has been no activity yet. Try checking out a book."
+        emptyMessage="There are no books in the library."
         cols={{
           title: true,
           author: true,
           description: true,
           isbn: true,
-          state: false,
-          historyState: true,
-          historyDate: true,
+          state: true,
+          historyState: false,
+          historyDate: false,
         }}
       />
     );
@@ -42,7 +42,7 @@ export default function BookHistoryReport() {
   // Show Book List
   return (
     <Layout>
-      <PageTitle text="History" />
+      <PageTitle text="Current Status: All Books" />
       <div>{mainContent}</div>
     </Layout>
   );

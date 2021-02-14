@@ -2,12 +2,16 @@
 
 - a MongoDB connection
 
-## Add a file called ".env.local" and paste these lines:
+## 1. Add a file called ".env.local" and paste these lines:
 
-- MONGO_URI="<MONGO_DB_URI_HERE>"
-- BASE_URL="http://localhost:3000"
+MONGO_URI="<IN_THE_EMAIL>"
+BASE_URL="http://localhost:3000"
 
-## Run Development Server
+Of course I would never put this info on the internet in real life!
+
+## 2. npm install
+
+## 3. Run Development Server
 
 ```bash
 npm run dev
@@ -22,6 +26,10 @@ npm run dev
 - Get a book
 - Delete a book
 - Pagination
+
+## Optimizations
+
+- No need to load history on the main page
 
 ## Thoughts
 

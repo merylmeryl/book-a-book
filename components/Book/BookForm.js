@@ -13,6 +13,7 @@ import {
 
 const BookForm = ({ book }) => {
   const router = useRouter();
+  let errorClasses = "text-red-500 m-h-3";
 
   // CREATE
   let workingBook = {
@@ -89,7 +90,7 @@ const BookForm = ({ book }) => {
 
   return (
     <PopDiv>
-      <div className="container mx-auto flex flex-col space-y-4 md:max-w-xl">
+      <div className="container mx-auto flex flex-col p-9 rounded-lg space-y-4 md:max-w-xl bg-gray-800">
         <input
           type="text"
           name="title"
@@ -98,7 +99,7 @@ const BookForm = ({ book }) => {
           placeholder="Title"
           onChange={handleChange}
         />
-        <p className="text-red-500 m-h-3">{errors.title}</p>
+        <p className={errorClasses}>{errors.title}</p>
         <input
           type="text"
           name="author"
@@ -107,7 +108,7 @@ const BookForm = ({ book }) => {
           placeholder="Author"
           onChange={handleChange}
         />
-        <p className="text-red-500 m-h-3">{errors.author}</p>
+        <p className={errorClasses}>{errors.author}</p>
         <textarea
           name="description"
           value={form.description}
@@ -115,7 +116,7 @@ const BookForm = ({ book }) => {
           placeholder="Description"
           onChange={handleChange}
         ></textarea>
-        <p className="text-red-500 m-h-3">{errors.description}</p>
+        <p className={errorClasses}>{errors.description}</p>
         <input
           type="number"
           name="isbn"
@@ -126,7 +127,7 @@ const BookForm = ({ book }) => {
           placeholder="ISBN"
           onChange={handleChange}
         />
-        <p className="text-red-500 m-h-3">{errors.isbn}</p>
+        <p className={errorClasses}>{errors.isbn}</p>
         <a
           onClick={handleSubmit}
           className="cursor-pointer text-center bg-gray-200 text-green text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200"

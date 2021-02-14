@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Nav = () => {
   return (
-    <nav className="p-6 bg-white px-6 py-4 shadow">
+    <nav className="p-6 bg-gray-800 text-white px-6 py-4 shadow fixed w-full">
       <div className="flex container mx-auto flex-row items-center justify-between">
         <div className="flex justify-between items-center">
           <div>
@@ -13,10 +13,15 @@ const Nav = () => {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col mx-4">
+        <div className="flex flex-row mx-4">
           <Link href="/bookHistoryReport">
-            <a className="my-0 text-gray-800 hover:text-gray-500 mx-4">
-              History Report
+            <a className="my-0 text-white hover:text-white mx-1 md:mx-4">
+              Activity History
+            </a>
+          </Link>
+          <Link href="/bookStatusReport">
+            <a className="my-0 text-white hover:text-white mx-1 md:mx-4">
+              Book States
             </a>
           </Link>
         </div>

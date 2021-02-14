@@ -40,11 +40,6 @@ export default async (req, res) => {
           });
 
         const book = await Book.create(req.body);
-        book.history.push({
-          state: "NEW",
-          date: Date.now,
-        });
-        book.save();
 
         res.status(201).json({ success: true, data: book });
       } catch (error) {

@@ -34,7 +34,7 @@ const Book = ({ book }) => {
           </Link>
           <a
             onClick={() => deleteBook(book._id)}
-            className="px-2 py-1 bg-red-500 text-white font-bold rounded cursor-pointer"
+            className="px-2 py-1 bg-gray-300 text-red-500 font-bold rounded cursor-pointer"
           >
             X
           </a>

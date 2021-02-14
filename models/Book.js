@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 const BookHistorySchema = new Schema({
   state: {
     type: String,
-    enum: ["NEW", "CHECKED OUT", "AVAILABLE"],
-    default: "NEW",
+    enum: ["CHECKED OUT", "AVAILABLE"],
+    default: "AVAILABLE",
   },
   actionDate: {
     type: Date,
@@ -48,8 +48,8 @@ const BookSchema = new Schema({
   },
   state: {
     type: String,
-    enum: ["NEW", "CHECKED OUT", "AVAILABLE"],
-    default: "NEW",
+    enum: ["CHECKED OUT", "AVAILABLE"],
+    default: "AVAILABLE",
   },
   history: [BookHistorySchema],
 });
