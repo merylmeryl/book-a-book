@@ -3,7 +3,7 @@ import Link from "next/link";
 const Nav = () => {
   return (
     <nav className="p-6 bg-white px-6 py-4 shadow">
-      <div className="flex flex-col container mx-auto md:flex-row md:items-center md:justify-between">
+      <div className="flex container mx-auto flex-row items-center justify-between">
         <div className="flex justify-between items-center">
           <div>
             <Link href="/">
@@ -12,6 +12,13 @@ const Nav = () => {
               </a>
             </Link>
           </div>
+        </div>
+        <div className="flex flex-col mx-4">
+          <Link href="/bookHistoryReport">
+            <a className="my-0 text-gray-800 hover:text-gray-500 mx-4">
+              History Report
+            </a>
+          </Link>
         </div>
       </div>
     </nav>

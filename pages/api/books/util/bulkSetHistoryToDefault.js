@@ -1,12 +1,10 @@
-import dbConnect from "../../../utils/dbConnect";
-import Book from "../../../models/Book";
+import dbConnect from "../../../../utils/dbConnect";
+import Book from "../../../../models/Book";
 
 dbConnect();
 
 export default async (req, res) => {
-  // Killswitch
-  res.status(404);
-
+  // res.status(404).json({ message: "404: This page could not be found." });
   const { method } = req;
 
   // GET all books
@@ -15,11 +13,9 @@ export default async (req, res) => {
       try {
         const books = await Book.find({});
         books.forEach((book) => {
-          book.update({
-            $set: { history: [] },
-          });
+          book.history = [];
           book.history.push({ state: "NEW", actionDate: book.createdAt });
-          console.log(book);
+          book.save();
         });
 
         res

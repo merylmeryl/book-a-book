@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       </Head>
       <div className="bg-gray-100">
         <Nav />
-        <div className="container mx-auto p-6 font-sans">
+        <div className="container mx-auto p-6 font-sans flex flex-col min-h-screen">
           <main className="px-6 py-8">{children}</main>
         </div>
       </div>

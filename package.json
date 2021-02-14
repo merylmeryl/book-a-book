@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest ./__tests__/test.js --detectOpenHandles"
   },
   "dependencies": {
     "autoprefixer": "^10.2.4",
@@ -14,8 +15,17 @@
     "next": "10.0.6",
     "postcss": "^8.2.6",
     "react": "17.0.1",
+    "react-csv": "^2.0.3",
     "react-dom": "17.0.1",
     "swr": "^0.4.2",
     "tailwindcss": "^2.0.3"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-react": "^7.12.13",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "mongodb-memory-server": "^6.9.3",
+    "node-mocks-http": "^1.10.1"
   }
 }

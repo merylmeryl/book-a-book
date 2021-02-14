@@ -3,6 +3,8 @@ import Book from "../../../models/Book";
 
 dbConnect();
 
+const DEFAULT_PAGE_SIZE = 30;
+
 export default async (req, res) => {
   const { method } = req;
 
@@ -10,7 +12,15 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        const books = await Book.find({}).sort([["createdAt", -1]]);
+        const limit = req.query.limit
+          ? parseInt(req.query.limit)
+          : DEFAULT_PAGE_SIZE;
+        const skip = req.query.skip ? parseInt(req.query.skip) : 0;
+
+        const books = await Book.find({})
+          .skip(skip) // Always apply 'skip' before 'limit'
+          .limit(limit)
+          .sort([["createdAt", -1]]);
 
         res
           .status(200)
@@ -23,14 +33,26 @@ export default async (req, res) => {
     // POST a new book
     case "POST":
       try {
+        const duplicateIsbn = await Book.find({ isbn: req.body.isbn });
+        if (duplicateIsbn.length > 0)
+          return res.status(400).json({
+            error: "A book with this ISBN already exists in the library.",
+          });
+
         const book = await Book.create(req.body);
         book.history.push({
           state: "NEW",
           date: Date.now,
         });
+        book.save();
 
         res.status(201).json({ success: true, data: book });
       } catch (error) {
+        if (error.name === "ValidationError") {
+          return res.status(400).json({ error: error.message });
+        } else if (error.name === "MongoError") {
+          return res.status(400).json({ error: "Data error" });
+        }
         res.status(400).json({ success: false });
       }
       break;

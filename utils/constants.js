@@ -1,0 +1,9 @@
+export const STATE_CHECKOUT = "CHECKED_OUT";
+export const STATE_AVAILABLE = "AVAILABLE";
+
+export const TITLE_NUM_CHARS = 150;
+export const AUTHOR_NUM_CHARS = 150;
+export const DESCRIPTION_NUM_CHARS = 2000;
+
+export const ISBN_MIN_VAL = 1000000000000;
+export const ISBN_MAX_VAL = 9999999999999;

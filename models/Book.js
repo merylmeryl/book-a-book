@@ -4,14 +4,12 @@ const { Schema } = mongoose;
 const BookHistorySchema = new Schema({
   state: {
     type: String,
-    enum: ["NEW", "CHECKED IN", "RETURNED"],
+    enum: ["NEW", "CHECKED OUT", "AVAILABLE"],
     default: "NEW",
-    required: true,
   },
   actionDate: {
     type: Date,
     default: Date.now,
-    required: true,
   },
 });
 
@@ -50,12 +48,10 @@ const BookSchema = new Schema({
   },
   state: {
     type: String,
-    enum: ["NEW", "CHECKED IN", "RETURNED"],
+    enum: ["NEW", "CHECKED OUT", "AVAILABLE"],
     default: "NEW",
   },
-  history: {
-    type: [BookHistorySchema],
-  },
+  history: [BookHistorySchema],
 });
 
 module.exports = mongoose.models.Book || mongoose.model("Book", BookSchema);

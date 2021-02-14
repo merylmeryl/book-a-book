@@ -1,12 +1,27 @@
+## Requirements
+
+- a MongoDB connection
+
+## Add a file called ".env.local" and paste these lines:
+
+- MONGO_URI="<MONGO_DB_URI_HERE>"
+- BASE_URL="http://localhost:3000"
+
 ## Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Test Cases
+
+- 0 books in library
+- 1,000,000 books in library
+- Create a book
+- Update a book
+- Get a book
+- Delete a book
+- Pagination
 
 ## Thoughts
 
