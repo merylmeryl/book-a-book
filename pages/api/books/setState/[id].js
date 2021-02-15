@@ -16,16 +16,24 @@ export default async (req, res) => {
       try {
         const book = await Book.findById(id);
         if (!book) {
-          return res.status(400).json({ success: false });
+          return res
+            .status(404)
+            .json({ success: false, message: "That book could not be found." });
         }
 
         let newState = "";
         if (req.query.state === "CHECKED_OUT") newState = "CHECKED OUT";
         else if (req.query.state === "AVAILABLE") newState = "AVAILABLE";
-        else return res.status(400).send("Invalid state in query");
+        else
+          return res
+            .status(400)
+            .json({ success: false, message: "Invalid state in query" });
 
         if (book.state == newState)
-          return res.status(400).send(`State is already set to ${newState}`);
+          return res.status(400).json({
+            success: false,
+            message: `State is already set to ${newState}`,
+          });
 
         book.state = newState;
         book.history.push({
@@ -51,15 +59,21 @@ export default async (req, res) => {
         return res.status(201).json({ success: true, data: book });
       } catch (error) {
         if (error.name === "ValidationError") {
-          return res.status(400).send(error.message);
+          return res
+            .status(400)
+            .json({ success: false, message: error.message });
         }
 
-        return res.status(400).send(error.message);
+        return res
+          .status(400)
+          .json({ success: false, message: "Something went wrong." });
       }
       break;
 
     default:
-      return res.status(400).json({ success: false });
+      return res
+        .status(400)
+        .json({ success: false, message: "Something went wrong." });
       break;
   }
 };

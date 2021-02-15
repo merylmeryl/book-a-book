@@ -11,7 +11,7 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        for (let i = 0; i < 10000000; i++) {
+        for (let i = 0; i < 1000; i++) {
           const book = await Book.create({
             title: "test",
             author: "test",

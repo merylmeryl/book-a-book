@@ -13,7 +13,11 @@ const BookList = ({ books }) => {
   return (
     <div>
       {books.map((book) => (
-        <Book book={book} key={`book-item-${book.isbn}`}></Book>
+        <Book
+          book={book}
+          links={{ checkout: true, edit: false, delete: false }}
+          key={`book-item-${book.isbn}`}
+        ></Book>
       ))}
     </div>
   );

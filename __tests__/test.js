@@ -29,7 +29,7 @@ describe("Library API", () => {
 
       await apiBooks(req, res);
 
-      console.log(res.error);
+      console.log(res.message);
 
       expect(res._getStatusCode()).toBe(200);
     });

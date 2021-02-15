@@ -15,6 +15,8 @@ class ButtonCheckout extends React.Component {
       (res) => {
         if (res.status == 400) {
           alert(`Sorry, the book's status is already ${apiState}`);
+        } else if (res.status == 404) {
+          alert("That book could not be found.");
         } else {
           this.setState({ available: !this.state.available });
         }

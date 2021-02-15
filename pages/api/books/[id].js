@@ -14,7 +14,9 @@ export default async (req, res) => {
       try {
         const book = await Book.findById(id);
         if (!book) {
-          return res.status(400).json({ success: false });
+          return res
+            .status(404)
+            .json({ success: false, message: "Book could not be found." });
         }
 
         res.status(200).json({ success: true, data: book });
@@ -41,19 +43,23 @@ export default async (req, res) => {
 
     case "DELETE":
       try {
-        const deletedBook = await Book.deleteOne({ _id: id });
+        const deletedBook = await Book.findOneAndDelete({ _id: id });
 
         if (!deletedBook) {
-          return res.status(400).json({ success: false });
+          return res
+            .status(404)
+            .json({ success: false, message: "That book could not be found." });
         }
 
         res.status(200).json({ success: true, data: deletedBook });
       } catch (error) {
-        return res.status(400).json({ success: false });
+        return res.status(400).json({ success: false, message: error.message });
       }
       break;
     default:
-      return res.status(400).json({ success: false });
+      return res
+        .status(400)
+        .json({ success: false, message: "Something went wrong." });
       break;
   }
 };

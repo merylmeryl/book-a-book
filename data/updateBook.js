@@ -11,7 +11,7 @@ export default function updateBook(bookData, callback) {
       if (res.success) {
         alert("Updated successfully!");
         callback();
-      } else alert(res.message);
+      } else alert(res.json().message);
     })
     .catch((error) => {
       alert("Error:", error);

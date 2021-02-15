@@ -14,37 +14,39 @@ const BookTable = ({ books, emptyMessage, cols }) => {
 
   // OK
   return (
-    <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-      <p className="text-center text-gray-700 my-3 md:hidden">
+    <>
+      <p className="text-center text-white my-3 md:hidden">
         &larr; Scroll &rarr;
       </p>
-      <table className="min-w-full leading-normal rounded-t-lg">
-        <thead>
-          <tr>
-            {cols.title ? <th className={thClasses}>Title</th> : <></>}
-            {cols.author ? <th className={thClasses}>Author</th> : <></>}
-            {cols.description ? (
-              <th className={thClasses}>Description</th>
-            ) : (
-              <></>
-            )}
-            {cols.isbn ? <th className={thClasses}>ISBN</th> : <></>}
-            {cols.state ? <th className={thClasses}>Status</th> : <></>}
-            {cols.historyState ? <th className={thClasses}>State</th> : <></>}
-            {cols.historyDate ? <th className={thClasses}>Date</th> : <></>}
-          </tr>
-        </thead>
-        <tbody className="text-sm font-normal text-gray-700">
-          {books.map((book, index) => (
-            <BookTableRow
-              book={book}
-              cols={cols}
-              key={`book-item-${book.isbn}-${index}`}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+        <table className="min-w-full leading-normal">
+          <thead>
+            <tr>
+              {cols.title ? <th className={thClasses}>Title</th> : <></>}
+              {cols.author ? <th className={thClasses}>Author</th> : <></>}
+              {cols.description ? (
+                <th className={thClasses}>Description</th>
+              ) : (
+                <></>
+              )}
+              {cols.isbn ? <th className={thClasses}>ISBN</th> : <></>}
+              {cols.state ? <th className={thClasses}>Status</th> : <></>}
+              {cols.historyState ? <th className={thClasses}>State</th> : <></>}
+              {cols.historyDate ? <th className={thClasses}>Date</th> : <></>}
+            </tr>
+          </thead>
+          <tbody className="text-sm font-normal text-gray-700">
+            {books.map((book, index) => (
+              <BookTableRow
+                book={book}
+                cols={cols}
+                key={`book-item-${book.isbn}-${index}`}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

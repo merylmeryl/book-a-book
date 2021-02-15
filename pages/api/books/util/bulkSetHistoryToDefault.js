@@ -22,11 +22,13 @@ export default async (req, res) => {
           .status(200)
           .json({ success: true, data: books, count: books.length });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, message: error.message });
       }
       break;
     default:
-      res.status(400).json({ success: false });
+      res
+        .status(400)
+        .json({ success: false, message: "Something went wrong." });
       break;
   }
 };

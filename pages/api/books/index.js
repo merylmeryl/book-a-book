@@ -36,7 +36,7 @@ export default async (req, res) => {
         const duplicateIsbn = await Book.find({ isbn: req.body.isbn });
         if (duplicateIsbn.length > 0)
           return res.status(400).json({
-            error: "A book with this ISBN already exists in the library.",
+            message: "A book with this ISBN already exists in the library.",
           });
 
         const book = await Book.create(req.body);
@@ -44,9 +44,9 @@ export default async (req, res) => {
         res.status(201).json({ success: true, data: book });
       } catch (error) {
         if (error.name === "ValidationError") {
-          return res.status(400).json({ error: error.message });
+          return res.status(400).json({ message: error.message });
         } else if (error.name === "MongoError") {
-          return res.status(400).json({ error: "Data error" });
+          return res.status(400).json({ message: "Data error" });
         }
         res.status(400).json({ success: false });
       }

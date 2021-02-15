@@ -42,7 +42,7 @@ export default function BookHistoryReport() {
   // Show Book List
   return (
     <Layout>
-      <PageTitle text="Current Status: All Books" />
+      <PageTitle text="Library Status" />
       <div>{mainContent}</div>
     </Layout>
   );

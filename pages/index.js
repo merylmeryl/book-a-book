@@ -14,20 +14,24 @@ export default function Home() {
   if (error)
     mainContent = (
       <PopDiv>
-        <main className="text-red-500 text-center">Failed to load -_-</main>
+        <main className="text-center mx-auto py-2 mb-2 text-2xl bg-gray-800 text-white bg-opacity-80 rounded-lg w-3/4">
+          Failed to load -_-
+        </main>
       </PopDiv>
     );
   else if (loading)
     mainContent = (
       <PopDiv>
-        <main className="text-gray-500 text-center">Loading...</main>
+        <main className="text-center mx-auto py-2 mb-2 text-2xl bg-gray-800 text-white bg-opacity-80 rounded-lg w-3/4">
+          Loading...
+        </main>
       </PopDiv>
     );
   else {
     mainContent = (
       <>
         <div className="flex flex-col justify-between text-center">
-          <p className="mx-auto py-2 mb-2 text-2xl bg-gray-800 text-white bg-opacity-80 rounded w-3/4">
+          <p className="mx-auto py-2 mb-2 text-2xl bg-gray-800 text-white bg-opacity-80 rounded-lg w-full">
             Book count:{" "}
             <span className="font-bold text-green-500">{count}</span>
           </p>
@@ -38,6 +42,9 @@ export default function Home() {
           </Link>
         </div>
         <BookList books={books} />
+        <Link href="/?limit=50">
+          <a>Let's go</a>
+        </Link>
       </>
     );
   }
@@ -45,9 +52,7 @@ export default function Home() {
   return (
     <Layout>
       <PageTitle text="All Books" />
-      <div>
-        <PopDiv>{mainContent}</PopDiv>
-      </div>
+      <PopDiv>{mainContent}</PopDiv>
     </Layout>
   );
 }

@@ -11,7 +11,7 @@ const createBook = async (bookData, callback) => {
       if (res.success) {
         alert("Saved successfully!");
         callback();
-      } else alert(res.error);
+      } else alert(res.message);
     })
     .catch((error) => {
       alert("Error:", error);

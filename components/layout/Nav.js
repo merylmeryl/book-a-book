@@ -14,14 +14,14 @@ const Nav = () => {
           </div>
         </div>
         <div className="flex flex-row mx-4">
-          <Link href="/bookHistoryReport">
+          {/* <Link href="/bookHistoryReport">
             <a className="my-0 text-white hover:text-white mx-1 md:mx-4">
-              Activity History
+              Book History
             </a>
-          </Link>
+          </Link> */}
           <Link href="/bookStatusReport">
             <a className="my-0 text-white hover:text-white mx-1 md:mx-4">
-              Book States
+              Library Status
             </a>
           </Link>
         </div>
