@@ -23,6 +23,15 @@ npm install
 npm run dev
 ```
 
+## Business Requirements: Library management system
+
+- API for CRUD of a books
+- CRUD title, author, isbn, description
+- Ability to manage books through a web interface
+- Ability to check in and check out a book
+- History of all books
+- Report that contains the current state of all books
+
 ## Test Cases
 
 - 0 books in library
@@ -39,4 +48,4 @@ npm run dev
 
 - My gut says that check-ins and returns should be performed by a User, but it wasn't listed in the spec, so I decided that this was an assumption that could later prove to be false.
 
-- I will add more testing, allow CORS and deploy the site later when I have some time.
+- I will add more testing, set up CORS middleware and deploy the site later when I have some time.
