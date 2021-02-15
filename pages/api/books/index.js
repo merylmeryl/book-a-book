@@ -12,21 +12,29 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        const limit = req.query.limit
-          ? parseInt(req.query.limit)
-          : DEFAULT_PAGE_SIZE;
-        const skip = req.query.skip ? parseInt(req.query.skip) : 0;
+        let limit = parseInt(req.query.limit);
+        let page = parseInt(req.query.page);
 
+        if (
+          !Number.isInteger(limit) ||
+          !Number.isInteger(page) ||
+          limit < 1 ||
+          page < 1
+        ) {
+          limit = 10;
+          page = 1;
+        }
+
+        const allBooks = await Book.find({});
+        const bookCount = allBooks.length;
         const books = await Book.find({})
-          .skip(skip) // Always apply 'skip' before 'limit'
+          .skip((page - 1) * limit) // Always apply 'skip' before 'limit'
           .limit(limit)
           .sort([["createdAt", -1]]);
 
-        res
-          .status(200)
-          .json({ success: true, data: books, count: books.length });
+        res.status(200).json({ success: true, data: books, count: bookCount });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, message: error.message });
       }
       break;
 
@@ -48,11 +56,11 @@ export default async (req, res) => {
         } else if (error.name === "MongoError") {
           return res.status(400).json({ message: "Data error" });
         }
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, message: error.message });
       }
       break;
     default:
-      res.status(400).json({ success: false });
+      res.status(405).json({ success: false, message: "Invalid method" });
       break;
   }
 };

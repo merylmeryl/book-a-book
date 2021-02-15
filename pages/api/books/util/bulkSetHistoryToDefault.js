@@ -27,7 +27,7 @@ export default async (req, res) => {
       break;
     default:
       res
-        .status(400)
+        .status(405)
         .json({ success: false, message: "Something went wrong." });
       break;
   }

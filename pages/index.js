@@ -3,11 +3,22 @@ import PageTitle from "../components/layout/PageTitle";
 import BookList from "../components/Book/BookList";
 import useBooks from "../data/use-books";
 import PopDiv from "../components/animation/PopDiv";
+import PaginationLinks from "../components/utility/PaginationLinks";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Home() {
   // Get books from API
-  const { loading, error, books, count } = useBooks();
+  const {
+    query: { limit, page },
+  } = useRouter();
+  let itemsPerPage = parseInt(limit);
+  let curPage = parseInt(page);
+
+  if (!Number.isInteger(itemsPerPage) || itemsPerPage < 1) itemsPerPage = 10;
+  if (!Number.isInteger(curPage) || curPage < 1) curPage = 1;
+
+  const { loading, error, books, count } = useBooks(limit, page);
   let mainContent = <></>;
 
   // Check for errors / loading status
@@ -41,17 +52,26 @@ export default function Home() {
             </a>
           </Link>
         </div>
+        <PaginationLinks
+          itemsPerPage={itemsPerPage}
+          totalItems={count}
+          curPage={curPage}
+          url={process.env.BASE_URL}
+        />
         <BookList books={books} />
-        <Link href="/?limit=50">
-          <a>Let's go</a>
-        </Link>
+        <PaginationLinks
+          itemsPerPage={itemsPerPage}
+          totalItems={count}
+          curPage={curPage}
+          url={process.env.BASE_URL}
+        />
       </>
     );
   }
   // Show Book List
   return (
     <Layout>
-      <PageTitle text="All Books" />
+      <PageTitle text="Welcome to the Library" />
       <PopDiv>{mainContent}</PopDiv>
     </Layout>
   );

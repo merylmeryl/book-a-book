@@ -11,12 +11,13 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 100; i++) {
           const book = await Book.create({
             title: "test",
             author: "test",
             description: "test",
-            isbn: 1000000000000 + i,
+            isbn: 3000000000000 + i,
+            createdAt: new Date(2018, 11, 24, 10, 33, 30, 0),
           });
           book.save();
         }
@@ -27,11 +28,13 @@ export default async (req, res) => {
           .status(200)
           .json({ success: true, data: books, count: books.length });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, message: error.message });
       }
       break;
     default:
-      res.status(400).json({ success: false });
+      res
+        .status(405)
+        .json({ success: false, message: "Something went wrong." });
       break;
   }
 };

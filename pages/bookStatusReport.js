@@ -1,12 +1,25 @@
+import { useRouter } from "next/router";
+
 import Layout from "../components/layout/Layout";
 import PageTitle from "../components/layout/PageTitle";
 import BookTable from "../components/Book/BookTable";
 import useBooks from "../data/use-books";
 import PopDiv from "../components/animation/PopDiv";
+import PaginationLinks from "../components/utility/PaginationLinks";
 
-export default function BookHistoryReport() {
+export default function BookStatusReport() {
   // Get books from API
-  const { loading, error, books } = useBooks();
+  const {
+    query: { limit, page },
+  } = useRouter();
+  let itemsPerPage = parseInt(limit);
+  let curPage = parseInt(page);
+
+  if (!Number.isInteger(itemsPerPage) || itemsPerPage < 1) itemsPerPage = 10;
+  if (!Number.isInteger(curPage) || curPage < 1) curPage = 1;
+
+  // Get books from API
+  const { loading, error, books, count } = useBooks(itemsPerPage, curPage);
   let mainContent;
 
   // Check for errors / loading status
@@ -43,7 +56,21 @@ export default function BookHistoryReport() {
   return (
     <Layout>
       <PageTitle text="Library Status" />
+
+      <PaginationLinks
+        itemsPerPage={itemsPerPage}
+        totalItems={count}
+        curPage={curPage}
+        url={process.env.BASE_URL + "/bookStatusReport"}
+      />
       <div>{mainContent}</div>
+
+      <PaginationLinks
+        itemsPerPage={itemsPerPage}
+        totalItems={count}
+        curPage={curPage}
+        url={process.env.BASE_URL + "/bookStatusReport"}
+      />
     </Layout>
   );
 }

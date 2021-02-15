@@ -6,7 +6,7 @@ import PopDiv from "../components/animation/PopDiv";
 
 export default function BookHistoryReport() {
   // Get books from API
-  const { loading, error, books } = useBooksHistory();
+  const { loading, error, books, count } = useBooksHistory();
   let mainContent;
 
   // Check for errors / loading status

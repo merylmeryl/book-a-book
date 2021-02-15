@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest ./__tests__/test.js --detectOpenHandles"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "autoprefixer": "^10.2.4",

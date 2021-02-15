@@ -58,8 +58,8 @@ export default async (req, res) => {
       break;
     default:
       return res
-        .status(400)
-        .json({ success: false, message: "Something went wrong." });
+        .status(405)
+        .json({ success: false, message: "Invalid method" });
       break;
   }
 };

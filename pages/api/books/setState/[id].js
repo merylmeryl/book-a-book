@@ -42,20 +42,6 @@ export default async (req, res) => {
         });
         book.save();
 
-        // const updatedBook = Book.findByIdAndUpdate(id, {
-        //   state: newState,
-        //   $push: {
-        //     history: {
-        //       $each: [
-        //         {
-        //           state: newState,
-        //           actionDate: Date.now,
-        //         },
-        //       ],
-        //       $position: 0,
-        //     },
-        //   },
-        // });
         return res.status(201).json({ success: true, data: book });
       } catch (error) {
         if (error.name === "ValidationError") {
@@ -72,8 +58,8 @@ export default async (req, res) => {
 
     default:
       return res
-        .status(400)
-        .json({ success: false, message: "Something went wrong." });
+        .status(405)
+        .json({ success: false, message: "Invalid method used." });
       break;
   }
 };
