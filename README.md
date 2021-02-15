@@ -33,14 +33,10 @@ npm run dev
 - Delete a book
 - Pagination
 
-## Optimizations
-
-- No need to load history on the main page
-
 ## Thoughts
 
 - Because the specifications were simple, I decided to prioritize extensibility and ease of use, and to treat the project as a Proof of Concept. This is why I have chosen not to add an authentication system, etc. I do not know the intended use of the product, so I tried to keep things as un-opinionated as possible.
 
-= My gut says that check-ins and returns should be performed by a User, but it wasn't listed in the spec, so I decided that this was an assumption that could later prove to be false.
+- My gut says that check-ins and returns should be performed by a User, but it wasn't listed in the spec, so I decided that this was an assumption that could later prove to be false.
 
 - I will add more testing, allow CORS and deploy the site later when I have some time.
