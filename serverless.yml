@@ -1,0 +1,2 @@
+book-a-book:
+  component: "@sls-next/serverless-component"
